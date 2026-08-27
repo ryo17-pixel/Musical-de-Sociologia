@@ -1,145 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Musical de Sociologia: uma viagem sonora pelas ideias que organizam a vida em sociedade.">
-	<title>Musical de Sociologia | A vida em cena</title>
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-		:root {
-			--ink: #182326;
-			--paper: #f4efe6;
-			--coral: #e75b45;
-			--mustard: #e9b949;
-			--teal: #247f78;
-			--line: rgba(24, 35, 38, .18);
-		}
-
-		* { box-sizing: border-box; }
-		html { scroll-behavior: smooth; }
-		body { margin: 0; color: var(--ink); background: var(--paper); font-family: 'Space Grotesk', sans-serif; }
-		a { color: inherit; text-decoration: none; }
-		button { color: inherit; font: inherit; cursor: pointer; }
-		.shell { max-width: 1240px; margin: auto; padding: 0 38px; }
-
-		header { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; border-bottom: 1px solid var(--line); }
-		.brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -.04em; }
-		.brand-mark { display: grid; place-items: center; width: 35px; height: 35px; color: var(--paper); background: var(--coral); border-radius: 50%; font-family: 'DM Mono', monospace; font-size: 12px; }
-		nav { display: flex; gap: 28px; color: #536064; font-family: 'DM Mono', monospace; font-size: 12px; text-transform: uppercase; }
-		nav a:hover { color: var(--coral); }
-		.ticket { border: 1px solid var(--ink); padding: 11px 15px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; transition: .2s; }
-		.ticket:hover { color: var(--paper); background: var(--ink); }
-
-		.hero { min-height: 660px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; padding: 82px 0 96px; }
-		.eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; color: var(--coral); font-family: 'DM Mono', monospace; font-size: 12px; text-transform: uppercase; }
-		.eyebrow::before { content: ''; width: 34px; height: 2px; background: currentColor; }
-		h1 { max-width: 680px; margin: 0; font-size: clamp(3.8rem, 8vw, 7.8rem); line-height: .88; letter-spacing: -.09em; font-weight: 600; }
-		h1 em { color: var(--coral); font-style: normal; }
-		.intro { max-width: 445px; margin: 32px 0; color: #536064; font-size: 17px; line-height: 1.55; }
-		.hero-actions { display: flex; align-items: center; gap: 22px; }
-		.primary { border: 0; padding: 16px 20px; color: var(--paper); background: var(--ink); font-family: 'DM Mono', monospace; font-size: 12px; text-transform: uppercase; }
-		.primary:hover { background: var(--coral); }
-		.scroll-link { font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; border-bottom: 1px solid var(--ink); padding-bottom: 4px; }
-
-		.stage { position: relative; min-height: 430px; display: grid; place-items: center; }
-		.stage::before { content: ''; position: absolute; width: 330px; height: 330px; background: var(--mustard); border-radius: 50%; }
-		.poster { position: relative; z-index: 1; width: 285px; height: 382px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; color: var(--paper); background: var(--teal); transform: rotate(5deg); box-shadow: 14px 16px 0 var(--ink); }
-		.poster-top { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 10px; text-transform: uppercase; }
-		.poster h2 { margin: auto 0; font-size: 63px; letter-spacing: -.1em; line-height: .82; }
-		.poster h2 span { display: block; color: var(--mustard); }
-		.poster-foot { border-top: 1px solid rgba(244,239,230,.5); padding-top: 12px; font-family: 'DM Mono', monospace; font-size: 10px; line-height: 1.5; }
-		.stamp { position: absolute; right: -21px; bottom: 54px; z-index: 2; width: 90px; height: 90px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--coral); color: var(--ink); font-family: 'DM Mono', monospace; font-size: 11px; text-align: center; transform: rotate(-13deg); }
-
-		.ticker { margin: 0 -38px; padding: 16px 38px; overflow: hidden; color: var(--paper); background: var(--coral); font-family: 'DM Mono', monospace; font-size: 12px; text-transform: uppercase; white-space: nowrap; }
-		.ticker span { margin-right: 42px; }
-		.ticker b { color: var(--mustard); font-weight: 400; }
-		section { padding: 100px 0; }
-		.section-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 42px; }
-		.section-kicker { color: var(--teal); font-family: 'DM Mono', monospace; font-size: 12px; text-transform: uppercase; }
-		h2.section-title { max-width: 650px; margin: 10px 0 0; font-size: clamp(2.3rem, 5vw, 4.6rem); line-height: .94; letter-spacing: -.08em; }
-		.section-note { max-width: 260px; color: #536064; font-size: 14px; line-height: 1.45; }
-		.acts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
-		.act { min-height: 310px; padding: 25px 24px 30px 0; border-bottom: 1px solid var(--line); }
-		.act + .act { padding-left: 24px; border-left: 1px solid var(--line); }
-		.act-number { color: var(--coral); font-family: 'DM Mono', monospace; font-size: 12px; }
-		.act h3 { margin: 66px 0 16px; font-size: 27px; letter-spacing: -.05em; }
-		.act p { max-width: 290px; margin: 0; color: #536064; line-height: 1.5; font-size: 14px; }
-		.act-arrow { display: block; margin-top: 30px; color: var(--teal); font-size: 24px; }
-
-		.listen { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; padding-top: 28px; border-top: 1px solid var(--ink); }
-		.listen-copy h2 { margin: 0 0 18px; font-size: 42px; line-height: .95; letter-spacing: -.07em; }
-		.listen-copy p { color: #536064; line-height: 1.5; font-size: 14px; }
-		.tracks { border-top: 1px solid var(--line); }
-		.track { display: grid; grid-template-columns: 42px 1fr auto 38px; align-items: center; gap: 16px; min-height: 76px; border-bottom: 1px solid var(--line); }
-		.track-no { color: var(--coral); font-family: 'DM Mono', monospace; font-size: 12px; }
-		.track-name { font-weight: 600; }
-		.track-tag, .track-time { color: #536064; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; }
-		.play { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--ink); border-radius: 50%; background: transparent; font-size: 11px; }
-		.play:hover, .play.active { color: var(--paper); background: var(--coral); border-color: var(--coral); }
-
-		footer { display: flex; justify-content: space-between; padding: 28px 0; border-top: 1px solid var(--ink); color: #536064; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; }
-		.reveal { animation: rise .7s both; }
-		@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-		@media (max-width: 760px) {
-			.shell { padding: 0 20px; } header { padding: 18px 0; } nav { display: none; }
-			.hero { display: block; min-height: auto; padding: 65px 0 80px; } h1 { font-size: clamp(3.5rem, 18vw, 6rem); }
-			.stage { min-height: 390px; margin-top: 55px; } .stage::before { width: 270px; height: 270px; }
-			.poster { width: 240px; height: 325px; } .poster h2 { font-size: 54px; } .stamp { right: 3px; bottom: 35px; }
-			.ticker { margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
-			section { padding: 72px 0; } .section-head { display: block; } .section-note { margin-top: 22px; }
-			.acts, .listen { display: block; } .act, .act + .act { min-height: auto; padding: 24px 0; border-left: 0; }
-			.act h3 { margin: 34px 0 12px; } .listen-copy { margin-bottom: 42px; } footer { gap: 15px; flex-direction: column; }
-			.track { grid-template-columns: 30px 1fr 34px; gap: 10px; } .track-tag, .track-time { display: none; }
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sociólogos Clássicos: Marx, Durkheim e Weber</title>
+  <meta name="description" content="Site interativo sobre os três pilares da Sociologia clássica: Karl Marx, Émile Durkheim e Max Weber. Biografias, ideias principais e flashcards de mito e verdade.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div class="shell">
-		<header>
-			<a class="brand" href="#top"><span class="brand-mark">MS</span><span>Musical<br>de Sociologia</span></a>
-			<nav aria-label="Navegação principal"><a href="#atos">Atos</a><a href="#trilha">Trilha</a><a href="#sobre">Sobre</a></nav>
-			<a class="ticket" href="#trilha">Ouça agora ↗</a>
-		</header>
+  <header class="hero">
+    <nav class="nav">
+      <a href="#inicio" class="logo">Sociologia Clássica</a>
+      <ul class="nav-links">
+        <li><a href="#marx">Marx</a></li>
+        <li><a href="#durkheim">Durkheim</a></li>
+        <li><a href="#weber">Weber</a></li>
+        <li><a href="#flashcards">Flashcards</a></li>
+        <li><a href="#comparacao">Comparação</a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </nav>
+    <div class="hero-content" id="inicio">
+      <h1>Os Três Pilares da Sociologia</h1>
+      <p class="subtitle">Karl Marx · Émile Durkheim · Max Weber</p>
+      <p class="hero-text">Explore a vida, as ideias e o legado dos pensadores que fundaram a Sociologia como ciência. Um site interativo para estudantes e curiosos.</p>
+      <a href="#flashcards" class="btn-primary">Teste seus conhecimentos</a>
+    </div>
+  </header>
 
-		<main id="top">
-			<section class="hero reveal">
-				<div>
-					<div class="eyebrow">Uma experiência em três atos</div>
-					<h1>A vida<br>em <em>cena.</em></h1>
-					<p class="intro">Um musical para quem quer ouvir as engrenagens da sociedade: as regras que herdamos, as vozes que disputam espaço e os futuros que ainda podemos imaginar.</p>
-					<div class="hero-actions"><a class="primary" href="#trilha">Começar a escuta →</a><a class="scroll-link" href="#atos">Ver o programa</a></div>
-				</div>
-				<div class="stage" aria-label="Cartaz do musical">
-					<div class="poster"><div class="poster-top"><span>Temporada 01</span><span>2026</span></div><h2>MUSI<span>CAL</span><small>DE SOCIOLOGIA</small></h2><div class="poster-foot">Uma produção sobre nós,<br>com nós e para nós.</div></div>
-					<div class="stamp">PENSE<br>JUNTO<br>★</div>
-				</div>
-			</section>
+  <main>
+    <!-- MARX -->
+    <section id="marx" class="thinker-section marx">
+      <div class="container">
+        <div class="thinker-grid">
+          <div class="portrait">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Karl_Marx_001.jpg/500px-Karl_Marx_001.jpg" alt="Retrato de Karl Marx (1875)" loading="lazy">
+            <figcaption>Karl Marx (1818–1883)</figcaption>
+          </div>
+          <div class="content">
+            <h2>Karl Marx</h2>
+            <p class="tagline">Materialismo Histórico e Luta de Classes</p>
+            <p>Filósofo, economista e revolucionário alemão. Marx analisou o capitalismo a partir das relações de produção e da exploração do trabalho. Para ele, a história da humanidade é a história da luta de classes.</p>
+            <h3>Ideias Principais</h3>
+            <ul>
+              <li><strong>Materialismo Histórico:</strong> a base econômica determina a superestrutura (política, direito, cultura).</li>
+              <li><strong>Burguesia × Proletariado:</strong> classes fundamentais do capitalismo.</li>
+              <li><strong>Mais-valia:</strong> o lucro capitalista vem da exploração do tempo de trabalho não pago.</li>
+              <li><strong>Alienação:</strong> o trabalhador se distancia do produto do seu trabalho, de si mesmo e dos outros.</li>
+              <li><strong>Revolução:</strong> o proletariado deve superar o capitalismo e construir uma sociedade sem classes.</li>
+            </ul>
+            <p class="quote">“Os filósofos apenas interpretaram o mundo de diferentes maneiras; o que importa é transformá-lo.” — <em>Teses sobre Feuerbach</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-			<div class="ticker"><span>O pessoal é político <b>✦</b></span><span>O palco é coletivo <b>✦</b></span><span>A escuta transforma <b>✦</b></span><span>O pessoal é político <b>✦</b></span></div>
+    <!-- DURKHEIM -->
+    <section id="durkheim" class="thinker-section durkheim">
+      <div class="container">
+        <div class="thinker-grid reverse">
+          <div class="portrait">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/%C3%89mile_Durkheim.jpg" alt="Retrato de Émile Durkheim" loading="lazy">
+            <figcaption>Émile Durkheim (1858–1917)</figcaption>
+          </div>
+          <div class="content">
+            <h2>Émile Durkheim</h2>
+            <p class="tagline">Fatos Sociais e Solidariedade</p>
+            <p>Sociólogo francês considerado o fundador da Sociologia como disciplina científica autônoma. Defendeu o estudo dos “fatos sociais” com objetividade, como “coisas” exteriores ao indivíduo.</p>
+            <h3>Ideias Principais</h3>
+            <ul>
+              <li><strong>Fatos Sociais:</strong> maneiras de agir, pensar e sentir exteriores ao indivíduo e dotadas de poder coercitivo.</li>
+              <li><strong>Solidariedade Mecânica:</strong> sociedades tradicionais, baseadas na semelhança.</li>
+              <li><strong>Solidariedade Orgânica:</strong> sociedades modernas, baseadas na interdependência pela divisão do trabalho.</li>
+              <li><strong>Anomia:</strong> ausência ou enfraquecimento de normas sociais, gerando desorientação.</li>
+              <li><strong>Suicídio:</strong> fenômeno social (não apenas individual); tipos: egoísta, altruísta, anômico e fatalista.</li>
+            </ul>
+            <p class="quote">“Tratar os fatos sociais como coisas.” — <em>As Regras do Método Sociológico</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-			<section id="atos">
-				<div class="section-head"><div><div class="section-kicker">01 — O programa</div><h2 class="section-title">Toda sociedade tem uma coreografia.</h2></div><p class="section-note">Três atos para perceber o que costuma passar despercebido no cotidiano.</p></div>
-				<div class="acts">
-					<article class="act"><span class="act-number">ATO I / ESTRUTURA</span><h3>Quem escreveu as regras?</h3><p>Instituições, normas e desigualdades: o cenário que recebemos antes mesmo de entrar em cena.</p><span class="act-arrow">↘</span></article>
-					<article class="act"><span class="act-number">ATO II / CULTURA</span><h3>Quem tem o microfone?</h3><p>Identidade, linguagem e representação. As histórias que nos aproximam e as que foram silenciadas.</p><span class="act-arrow">↘</span></article>
-					<article class="act"><span class="act-number">ATO III / MUDANÇA</span><h3>E se mudarmos o passo?</h3><p>Ação coletiva não é um solo: é quando muitas vozes encontram ritmo para mover o mundo.</p><span class="act-arrow">↘</span></article>
-				</div>
-			</section>
+    <!-- WEBER -->
+    <section id="weber" class="thinker-section weber">
+      <div class="container">
+        <div class="thinker-grid">
+          <div class="portrait">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Max_Weber_1894.jpg/500px-Max_Weber_1894.jpg" alt="Retrato de Max Weber (1894)" loading="lazy">
+            <figcaption>Max Weber (1864–1920) · 1894</figcaption>
+          </div>
+          <div class="content">
+            <h2>Max Weber</h2>
+            <p class="tagline">Ação Social e Sociologia Compreensiva</p>
+            <p>Sociólogo, jurista e economista alemão. Desenvolveu a Sociologia compreensiva: o objetivo é entender o sentido que os indivíduos atribuem às suas ações. Diferenciou-se tanto de Marx quanto de Durkheim.</p>
+            <h3>Ideias Principais</h3>
+            <ul>
+              <li><strong>Ação Social:</strong> conduta orientada pelo sentido que o ator atribui e pela expectativa em relação aos outros.</li>
+              <li><strong>Tipos de Ação:</strong> tradicional, afetiva, racional com relação a valores e racional com relação a fins.</li>
+              <li><strong>Ética Protestante:</strong> o ascetismo intramundano do protestantismo favoreceu o “espírito do capitalismo”.</li>
+              <li><strong>Burocracia:</strong> forma racional-legal de dominação, eficiente mas potencialmente desumanizante (“jaula de ferro”).</li>
+              <li><strong>Tipos Ideais:</strong> construções teóricas para comparar e compreender a realidade.</li>
+            </ul>
+            <p class="quote">“O Estado é uma comunidade humana que reivindica o monopólio do uso legítimo da força física dentro de um determinado território.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-			<section id="trilha" class="listen">
-				<div class="listen-copy"><div class="section-kicker">02 — A trilha sonora</div><h2>Escute as ideias ganharem corpo.</h2><p>Uma seleção imaginária para acompanhar a aula, a conversa ou aquela caminhada em que tudo começa a fazer sentido.</p></div>
-				<div class="tracks" aria-label="Faixas do musical">
-					<div class="track"><span class="track-no">01</span><span class="track-name">O cenário não é neutro</span><span class="track-tag">Estrutura</span><span class="track-time">3:42</span><button class="play" aria-label="Reproduzir O cenário não é neutro">▶</button></div>
-					<div class="track"><span class="track-no">02</span><span class="track-name">Vozes em trânsito</span><span class="track-tag">Cultura</span><span class="track-time">4:18</span><button class="play" aria-label="Reproduzir Vozes em trânsito">▶</button></div>
-					<div class="track"><span class="track-no">03</span><span class="track-name">Ensaio para um nós</span><span class="track-tag">Mudança</span><span class="track-time">5:06</span><button class="play" aria-label="Reproduzir Ensaio para um nós">▶</button></div>
-				</div>
-			</section>
-		</main>
+    <!-- FLASHCARDS -->
+    <section id="flashcards" class="flashcards-section">
+      <div class="container">
+        <h2>Flashcards: Mito ou Verdade?</h2>
+        <p class="section-intro">Clique em cada card para revelar a resposta. Teste o que você sabe sobre os clássicos da Sociologia.</p>
+        
+        <div class="flashcards-grid">
+          <!-- Card 1 - Marx -->
+          <div class="flashcard" tabindex="0" role="button" aria-label="Flashcard sobre Marx">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="card-label">Mito ou Verdade?</span>
+                <h3>Karl Marx inventou o comunismo e foi o responsável pelos regimes do século XX.</h3>
+                <p class="hint">Toque para revelar</p>
+              </div>
+              <div class="flashcard-back">
+                <span class="verdict mito">MITO</span>
+                <p>Marx analisou o capitalismo e propôs a superação das classes, mas ideias comunistas e socialistas existem desde antes (utópicos, etc.). Os regimes do século XX (URSS, China etc.) se inspiraram em interpretações posteriores de sua obra e divergiram significativamente do que ele escreveu.</p>
+              </div>
+            </div>
+          </div>
 
-		<footer id="sobre"><span>Musical de Sociologia © 2026</span><span>Feito para pensar em conjunto ↗</span></footer>
-	</div>
-	<script src="script.js" defer></script>
+          <!-- Card 2 - Durkheim -->
+          <div class="flashcard" tabindex="0" role="button" aria-label="Flashcard sobre Durkheim">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="card-label">Mito ou Verdade?</span>
+                <h3>Durkheim estudou o suicídio como um fato social, e não apenas como ato individual.</h3>
+                <p class="hint">Toque para revelar</p>
+              </div>
+              <div class="flashcard-back">
+                <span class="verdict verdade">VERDADE</span>
+                <p>Sim. Em “O Suicídio” (1897), Durkheim demonstrou que as taxas de suicídio variam conforme fatores sociais (integração, regulação normativa). Criou tipologias (egoísta, altruísta, anômico, fatalista) e consolidou a Sociologia como ciência capaz de explicar fenômenos aparentemente individuais.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 - Weber -->
+          <div class="flashcard" tabindex="0" role="button" aria-label="Flashcard sobre Weber">
+            <div class="flashcard-inner">
+              <div class="flashcard-front">
+                <span class="card-label">Mito ou Verdade?</span>
+                <h3>Weber afirmou que o protestantismo foi a causa única do capitalismo moderno.</h3>
+                <p class="hint">Toque para revelar</p>
+              </div>
+              <div class="flashcard-back">
+                <span class="verdict mito">MITO</span>
+                <p>Weber nunca disse que foi a causa única. Ele argumentou que a ética protestante (especialmente calvinista) foi um fator cultural importante que favoreceu o surgimento do “espírito do capitalismo”. Outros fatores econômicos, políticos e históricos também foram essenciais. Trata-se de afinidade eletiva, não de determinismo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARAÇÃO -->
+    <section id="comparacao" class="comparison-section">
+      <div class="container">
+        <h2>Comparação Rápida</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Aspecto</th>
+                <th>Karl Marx</th>
+                <th>Émile Durkheim</th>
+                <th>Max Weber</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Foco principal</td>
+                <td>Conflito de classes e economia</td>
+                <td>Coesão social e fatos sociais</td>
+                <td>Ação social e sentido</td>
+              </tr>
+              <tr>
+                <td>Método</td>
+                <td>Materialismo histórico-dialético</td>
+                <td>Positivista / fatos como coisas</td>
+                <td>Compreensivo (Verstehen)</td>
+              </tr>
+              <tr>
+                <td>Visão da sociedade</td>
+                <td>Estrutura de classes em conflito</td>
+                <td>Sistema de solidariedade</td>
+                <td>Rede de ações com sentido</td>
+              </tr>
+              <tr>
+                <td>Modernidade</td>
+                <td>Capitalismo → exploração e alienação</td>
+                <td>Divisão do trabalho → solidariedade orgânica</td>
+                <td>Racionalização e burocracia</td>
+              </tr>
+              <tr>
+                <td>Papel do indivíduo</td>
+                <td>Determinado pela classe</td>
+                <td>Moldado pelos fatos sociais</td>
+                <td>Atribui sentido às ações</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Site educativo interativo sobre os clássicos da Sociologia.</p>
+      <p>Imagens: Wikimedia Commons (domínio público).</p>
+      <p>Código-fonte disponível no GitHub · Publicado via GitHub Pages / Vercel</p>
+      <p class="credits">Feito para fins educacionais · 2026</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
